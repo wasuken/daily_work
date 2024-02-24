@@ -37,6 +37,10 @@ class TestRegularExpressions < Test::Unit::TestCase
 [2023-02-20 10:32:10] [ERROR] [user] Error occurred: Unable to access the database
 [2023-02-20 10:33:30] [INFO] [user] User logged in
 EOF
-    contents.split("\n")
+    lines = contents.split("\n")
+    expected = [
+      "[2023-02-20 10:32:10] Unable to access the database"
+    ]
+    assert_equal(@myv.valid_log_file_lines(lines), expected)
   end
 end
