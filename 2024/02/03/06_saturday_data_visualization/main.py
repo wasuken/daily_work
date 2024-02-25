@@ -1,3 +1,4 @@
+# 06
 import numpy as np
 import pandas as pd
 
@@ -6,10 +7,6 @@ import pandas as pd
 # データの分析
 # データの視覚化
 
-'''
-1. 仮想目的
-A社の
-'''
 
 # データの読み込み
 df = pd.read_csv('./data.csv')

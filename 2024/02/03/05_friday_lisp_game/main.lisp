@@ -1,3 +1,4 @@
+;; 05
 (defun n-hint (n input)
   (cond ((> n input)
 	 (format t "nは~Aよりおおきい~%" input)

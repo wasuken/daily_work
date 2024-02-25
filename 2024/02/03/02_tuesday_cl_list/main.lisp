@@ -1,3 +1,4 @@
+;; 02
 ;; 課題1: リストの作成と表示
 (defun subject-1-create-list-and-display ()
   (let ((lst '(1 2 3 4 5)))
