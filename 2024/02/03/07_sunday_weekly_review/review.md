@@ -1,13 +1,13 @@
 # 1. 進捗の確認
 
-| title                           | result |
-| ------------------------------- | ------ |
-| 01_monday_onesay_diary/         | OK     |
-| 02_tuesday_cl_list/             | OK     |
-| 03_wednesday_weather_scraper/   | OK     |
-| 04_thursday_ruby_regexp/        | OK     |
-| 05_friday_lisp_game/            | OK     |
-| 06_saturday_data_visualization/ | OK     |
+| No  | wekk      | title              | result |
+| --- | --------- | ------------------ | ------ |
+| 01  | monday    | onesay_diary       | OK     |
+| 02  | tuesday   | cl_list            | OK     |
+| 03  | wednesday | weather_scraper    | OK     |
+| 04  | thursday  | ruby_regexp        | OK     |
+| 05  | friday    | lisp_game          | OK     |
+| 06  | saturday  | data_visualization | OK     |
 
 # 成果物のレビュー(ChatGPT)
 
