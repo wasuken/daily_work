@@ -1,0 +1,49 @@
+---
+- onix:
+    CollateralDetail: {}
+    RecordReference: '9784774196077'
+    NotificationType: '03'
+    ProductIdentifier:
+      ProductIDType: '15'
+      IDValue: '9784774196077'
+    DescriptiveDetail:
+      TitleDetail:
+        TitleType: '01'
+        TitleElement:
+          TitleElementLevel: '01'
+          TitleText:
+            collationkey: 'タメシテ リカイ リナックス ノ シクミ : ジッケン ト ズカイ デ マナブ オーエス ト ハードウェア ノ
+              キソ チシキ'
+            content: '試して理解Linuxのしくみ : 実験と図解で学ぶOSとハードウェアの基礎知識'
+      Contributor:
+      - SequenceNumber: '1'
+        ContributorRole: []
+        PersonName:
+          content: 武内, 覚
+          collationkey: タケウチ, サトル
+    PublishingDetail:
+      Imprint:
+        ImprintName: 技術評論社
+      PublishingDate:
+      - PublishingDateRole: '11'
+        Date: '201803'
+    ProductSupply:
+      SupplyDetail:
+        ProductAvailability: '99'
+        Price:
+        - PriceType: '01'
+          CurrencyCode: JPY
+          PriceAmount: '2980'
+  hanmoto:
+    datecreated: '2018-06-21 15:34:26'
+    dateshuppan: '2018-3-8'
+    datemodified: '2018-06-21 15:34:26'
+  summary:
+    isbn: '9784774196077'
+    title: '試して理解Linuxのしくみ : 実験と図解で学ぶOSとハードウェアの基礎知識'
+    volume: ''
+    series: ''
+    publisher: 技術評論社
+    pubdate: '201803'
+    cover: ''
+    author: 武内,覚
