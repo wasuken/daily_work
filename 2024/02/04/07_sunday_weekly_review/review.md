@@ -4,8 +4,8 @@
 | --- | --------- | ------------- | ------ |
 | 01  | monday    | csv           | OK     |
 | 02  | tuesday   | math          | OK     |
-| 03  | wednesday | data_analysis | NG     |
-| 04  | thursday  | simple_cli    | NG     |
+| 03  | wednesday | data_analysis | OK     |
+| 04  | thursday  | simple_cli    | OK     |
 | 05  | friday    | web           | NG     |
 | 06  | saturday  | text          | NG     |
 
