@@ -1,43 +1,52 @@
-# 行チェック: 先頭になにかある
-# 行中チェック: 特定のパターンがある
-def line_parse(line)
-  parsed_str = line
-  case line
-  when /^# /
-    n = line.match(/^#+/)[0].length
-    s = line.gsub(/^#+/, '')
-    parsed_str = "<h#{n}>#{s}</h#{n}>"
-  end
-  parsed_str
+HEADER_PATTERN = /^(#+)\s*(.*)/
+STRONG_PATTERN = /\*\*(.*?)\*\*/
+STRIKE_PATTERN = /~~(.*?)~~/
+
+def process_inline(line)
+  line = line.gsub(STRONG_PATTERN, '<strong>\1</strong>')
+  line.gsub(STRIKE_PATTERN, '<strike>\1</strike>')
 end
-def strong(line)
-  mt = line.match(/\*\*(.*)\*\*/)
-  if mt
-    v = mt[1]
-    "<strong>#{v}</strong>"
+
+def process_header(line)
+  if match = line.match(HEADER_PATTERN)
+    level, text = match.captures
+    "<h#{level.length}>#{text}</h#{level.length}>"
   else
     line
   end
 end
-def strike(line)
-  mt = line.match(/~~(.*)~~/)
-  if mt
-    v = mt[1]
-    "<strike>#{v}</strike>"
-  else
-    line
-  end
-end
-def in_line_parse(line)
-  strike(strong(line))
-end
-# 行ごとの配列に分割し、行チェックを行う
-def main_stream(fp)
+
+def process_list(lines)
+  lines.any?{|x| x[0] == '-'}
+  listing = false
   rst = ""
-  File.readlines(fp).each do |l|
-    rst += in_line_parse(line_parse(l))
+  for line in lines
+    rst += "</ul>" if listing && line[0] != '-'
+    rst += "<ul>" if !listing && line[0] == '-'
+
+    if line[0] == '-'
+      rst += "<li>#{line[2,line.length]}</li>"
+    else
+      rst += line
+    end
+    listing = line[0] == '-'
   end
   rst
+end
+
+def main_stream(file_path)
+  lines = File.readlines(file_path).map { |line|
+    process_inline(process_header(line))
+  }
+  contents_html = process_list(lines)
+  <<"EOT"
+<html>
+<head></head>
+<body>
+#{contents_html}
+</body>
+</html>
+EOT
 end
 
 puts main_stream("sample.md")
