@@ -1,6 +1,6 @@
 # 1. 進捗の確認
 
-| No  | wekk      | title         | result |
+| No  | week      | title         | result |
 | --- | --------- | ------------- | ------ |
 | 01  | monday    | csv           | OK     |
 | 02  | tuesday   | math          | OK     |
