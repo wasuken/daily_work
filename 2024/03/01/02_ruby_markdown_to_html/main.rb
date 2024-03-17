@@ -16,22 +16,27 @@ def process_header(line)
   end
 end
 
-def process_list(lines)
-  lines.any?{|x| x[0] == '-'}
+def process_list_common(lines, c = '-')
   listing = false
-  rst = ""
+  rst = []
   for line in lines
-    rst += "</ul>" if listing && line[0] != '-'
-    rst += "<ul>" if !listing && line[0] == '-'
+    rst << "</ul>" if listing && line[0] != c
+    rst << "<ul>" if !listing && line[0] == c
 
-    if line[0] == '-'
-      rst += "<li>#{line[2,line.length]}</li>"
+    if line[0] == c
+      rst << "<li>#{line[2,line.length]}</li>"
     else
-      rst += line
+      rst << line
     end
-    listing = line[0] == '-'
+    listing = line[0] == c
   end
   rst
+end
+
+def process_list(lines)
+  process_list_common(process_list_common(lines, '*'), '-')
+    .join
+    .gsub(/(?:\n\n|\A)(.*?)(?:\n\n|\z)/m, '<div>\1</div>')
 end
 
 def main_stream(file_path)
