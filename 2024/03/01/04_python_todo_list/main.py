@@ -3,6 +3,14 @@ import json
 import uuid
 import os
 
+def is_int(s):
+    try:
+        int(s, 10)
+    except ValueError:
+        return False
+    else:
+        return True
+
 class Task:
     def __init__(self, id = None, title="", priority=1, status=1):
         self.id = id if id is not None else str(uuid.uuid4())
@@ -59,6 +67,10 @@ class TaskList:
         for i, task in enumerate(self.tasks):
             print(f"[{i}]{task.id}: \n\tタスク名:{task.title}\n\t優先度: {task.status}\n")
 
+    def num_to_id(self, num):
+        n = int(num)
+        return [x.id for i, x in enumerate(self.tasks) if i == n][0]
+
 TODO_FILE_PATH = './todo.json'
 
 if __name__ == '__main__':
@@ -88,6 +100,7 @@ if __name__ == '__main__':
 
             tl = TaskList(TODO_FILE_PATH)
             id = argv[2]
+            id = tl.num_to_id(id) if is_int(id) else id
             tl.delete(id)
             tl.list()
         case 'upd':
@@ -96,6 +109,7 @@ if __name__ == '__main__':
                 exit()
             tl = TaskList(TODO_FILE_PATH)
             id = argv[2]
+            id = tl.num_to_id(id) if is_int(id) else id
             title = argv[3]
             priority = int(argv[4])
             status = int(argv[5])
